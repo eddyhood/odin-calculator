@@ -1,5 +1,5 @@
 /* Branding elements: 
-Dark Blue: #000A3
+Dark Blue: #0000A3
 Blue Grotto: #0067B3
 Aqua: #40B0DF
 Yellow: #FFD53D
@@ -7,6 +7,22 @@ Yellow: #FFD53D
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+    background-color: #edf5fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calcBody {
+    border: 5px solid #0000A3;
+    height: 550px;
+    width: 450px;    
 }
 
 
