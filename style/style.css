@@ -11,7 +11,7 @@ Yellow: #FFD53D
 
 body {
     font-family: 'VT323', monospace;
-    font-size: 25px;
+    font-size: 40px;
     background-color: #edf5fd;
     display: flex;
     justify-content: center;
@@ -19,10 +19,32 @@ body {
     height: 100vh;
 }
 
+button {
+    width: 4rem;
+    height: 4rem;
+    font-size: 25px;
+}
 .calcBody {
     border: 5px solid #0000A3;
+    border-radius: 8px;
     height: 550px;
     width: 450px;    
 }
 
+.displayNums {
+    display: flex;
+    margin: 25px;
+    border: 2px solid #0000A3;
+    padding: 15px;
+    border-radius: 8px;
+    justify-content: flex-end;
+    background-color: rgb(248, 248, 248);
+}
+
+.keys {
+    display: grid | insline-grid;
+    grid-template-columns: 6;
+    grid-template-rows: 5;
+    
+}
 
