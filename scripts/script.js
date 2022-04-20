@@ -124,6 +124,7 @@ function operate(a, operator, b) {
 
 //Create functionality on the calculator
 const displayWindow = document.getElementById('display-window');
+const btn0 = document.getElementById('num0');
 const btn1 = document.getElementById('num1');
 const btn2 = document.getElementById('num2');
 const btn3 = document.getElementById('num3');
@@ -135,6 +136,7 @@ const btn8 = document.getElementById('num8');
 const btn9 = document.getElementById('num9');
 
 //Add event listeners
+btn0.addEventListener('click', e => updateDisplay(e));
 btn1.addEventListener('click', e => updateDisplay(e));
 btn2.addEventListener('click', e => updateDisplay(e));
 btn3.addEventListener('click', e => updateDisplay(e));
@@ -147,10 +149,14 @@ btn9.addEventListener('click', e => updateDisplay(e));
 
 //update display with clicks
 function updateDisplay(event) {
+    //Darken button
+
+    //Update display
     let figure = event.target.innerText;
     display.push(figure);
     let numString = display.join('')
     let updatedDisplay = parseInt(numString);
 
     displayWindow.innerText = updatedDisplay;
+    console.log(event);
 }
