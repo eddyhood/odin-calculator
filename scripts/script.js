@@ -120,3 +120,33 @@ function operate(a, operator, b) {
             break;
     }
 };
+
+
+//Create functionality on the calculator
+const displayWindow = document.getElementById('display-window');
+const btn1 = document.getElementById('num1');
+const btn2 = document.getElementById('num2');
+const btn3 = document.getElementById('num3');
+const btn4 = document.getElementById('num4');
+const btn5 = document.getElementById('num5');
+const btn6 = document.getElementById('num6');
+const btn7 = document.getElementById('num7');
+const btn8 = document.getElementById('num8');
+const btn9 = document.getElementById('num9');
+
+//Add event listeners
+btn1.addEventListener('click', e => updateDisplay(e));
+btn2.addEventListener('click', e => updateDisplay(e));
+btn3.addEventListener('click', e => updateDisplay(e));
+btn4.addEventListener('click', e => updateDisplay(e));
+btn5.addEventListener('click', e => updateDisplay(e));
+btn6.addEventListener('click', e => updateDisplay(e));
+btn7.addEventListener('click', e => updateDisplay(e));
+btn8.addEventListener('click', e => updateDisplay(e));
+btn9.addEventListener('click', e => updateDisplay(e));
+
+//update display with clicks
+function updateDisplay(event) {
+    let figure = event.target.innerText;
+    displayWindow.innerText = figure;
+}
