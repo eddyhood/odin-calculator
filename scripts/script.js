@@ -1,5 +1,5 @@
 //global variables
-let display = 0;
+let display = [];
 
 
 //Math functions
@@ -148,5 +148,9 @@ btn9.addEventListener('click', e => updateDisplay(e));
 //update display with clicks
 function updateDisplay(event) {
     let figure = event.target.innerText;
-    displayWindow.innerText = figure;
+    display.push(figure);
+    let numString = display.join('')
+    let updatedDisplay = parseInt(numString);
+
+    displayWindow.innerText = updatedDisplay;
 }
