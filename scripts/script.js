@@ -1,6 +1,8 @@
 //global variables
 let display = [];
+let memory = [];
 
+//memory functions
 
 //Math functions
 function addNums(a, b) {
@@ -134,6 +136,7 @@ const btn6 = document.getElementById('num6');
 const btn7 = document.getElementById('num7');
 const btn8 = document.getElementById('num8');
 const btn9 = document.getElementById('num9');
+const clearBtn = document.getElementById('clear-btn');
 
 //Add event listeners
 btn0.addEventListener('click', e => updateDisplay(e));
@@ -146,6 +149,7 @@ btn6.addEventListener('click', e => updateDisplay(e));
 btn7.addEventListener('click', e => updateDisplay(e));
 btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
+clearBtn.addEventListener('click', () => clearDisplay());
 
 //update display with clicks
 function updateDisplay(event) {
@@ -158,5 +162,9 @@ function updateDisplay(event) {
     let updatedDisplay = parseInt(numString);
 
     displayWindow.innerText = updatedDisplay;
-    console.log(event);
 }
+
+function clearDisplay() {
+    display = [];
+    displayWindow.innerText = 0;
+};

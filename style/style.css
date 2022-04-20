@@ -25,6 +25,7 @@ button {
     border: 1px solid #FFD53D;
     border-radius: 8px;
 }
+
 .calcBody {
     display: flex;
     flex-direction: column;
@@ -81,7 +82,7 @@ button {
     color: white;
 }
 
-.clear-btn {
+#clear-btn, #all-clear-btn {
     background-color: #0067B3;
     color: white;
 }
