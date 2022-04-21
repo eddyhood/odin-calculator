@@ -6,7 +6,10 @@ let memory = [];
 
 //Math functions
 function addNums(a, b) {
-    console.log(a + b);
+    sum = a + b;
+    memory = [sum];
+    console.log('new memory' + memory)
+    return(sum);
 };
 
 function subtractNums(a, b) {
@@ -103,22 +106,27 @@ function findPerfectSquare(n) {
 }
 
 //Function that will run calculations
-function operate(a, operator, b) {
+function operate(operator) {
+    let firstNum = memory[memory.length-2];
+    console.log('first Num' + typeof(firstNum) + firstNum)
+    let currentNum = convertDisplay();
+    console.log('second Num' + typeof(currentNum) + currentNum)
+
     switch(operator) {
         case '+':
-            addNums(a, b);
+            return addNums(firstNum, currentNum);
             break;
         case '-':
-            subtractNums(a, b);
+            subtractNums(firstNum, currentNum);
             break;
         case '*':
-            multiplyNums(a, b);
+            multiplyNums(firstNum, currentNum);
             break;
         case '/':
-            divideNums(a, b);
+            divideNums(firstNum, currentNum);
             break;
         case '^':
-            findExponent(a, b);
+            findExponent(firstNum, currentNum);
             break;
     }
 };
@@ -155,7 +163,7 @@ btn7.addEventListener('click', e => updateDisplay(e));
 btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
 clearBtn.addEventListener('click', () => clearEntry());
-addBtn.addEventListener('click', () => addToMemory());
+addBtn.addEventListener('click', e => addToMemory(e));
 subtractBtn.addEventListener('click', () => addToMemory());
 multiplyBtn.addEventListener('click', () => addToMemory());
 divideBtn.addEventListener('click', () => addToMemory());
@@ -167,8 +175,7 @@ function updateDisplay(event) {
     //Update display
     let figure = event.target.innerText;
     display.push(parseInt(figure));
-    let numString = display.join('')
-    let updatedDisplay = parseInt(numString);
+    let updatedDisplay = convertDisplay();
 
     displayWindow.innerText = updatedDisplay;
     console.log('display ' + display)
@@ -188,15 +195,42 @@ function clearEntry() {
 };
 
 //takes what is on display and adds to memory. Use when an operator key is pressed. 
-function addToMemory() {
+// function addToMemory(event) {
+//     if(display.length > 0) {
+//         let stringNum = display.join('');
+//         let num = parseInt(stringNum);
+//         memory.push(num);
+//         display = [];
+//         console.log('memory ' + memory);
+//     } else{
+//         memory = [];
+//         return;
+//     }
+// };
+
+function addToMemory(event) {
     if(display.length > 0) {
-        let stringNum = display.join('');
-        let num = parseInt(stringNum);
+        let num = convertDisplay();
         memory.push(num);
-        display = [];
-        console.log('memory ' + memory);
+        if(memory.length > 1){
+            operator = event.target.innerText;
+            total = operate(operator);
+            displayWindow.innerText = total;
+            display = [];
+        } else {
+            display = [];
+        }
+        console.log('memory low ' + memory);
+        console.log('display low' + display)
     } else{
         memory = [];
         return;
     }
+};
+
+//combines values in display array, and makes them a number
+function convertDisplay() {
+    let stringNum = display.join('');
+    let num = parseInt(stringNum);
+    return num;
 };
