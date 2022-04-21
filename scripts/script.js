@@ -6,26 +6,34 @@ let memory = [];
 
 //Math functions
 function addNums(a, b) {
-    sum = a + b;
-    memory = [sum];
-    console.log('new memory' + memory)
-    return(sum);
+    answer = a + b;
+    memory = [answer];
+    return(answer);
 };
 
 function subtractNums(a, b) {
-    display = a - b;
+    answer = a - b;
+    memory = [answer];
+    return(answer);
 }
 
 function multiplyNums(a, b) {
-    display = a * b;
+    console.log('I made it')
+    answer = a * b;
+    memory = [answer];
+    return(answer);
 }
 
 function divideNums(a, b) {
-    display = a / b;
+    answer = a / b;
+    memory = [answer];
+    return(answer);
 }
 
 function findExponent(base, power) {
-    display = base ** power;
+    answer = base ** power;
+    memory = [answer];
+    return(answer);
 }
 
 //Calculate square root. 
@@ -117,16 +125,17 @@ function operate(operator) {
             return addNums(firstNum, currentNum);
             break;
         case '-':
-            subtractNums(firstNum, currentNum);
+            return subtractNums(firstNum, currentNum);
             break;
-        case '*':
-            multiplyNums(firstNum, currentNum);
+        case 'X':
+            console.log('here too')
+            return multiplyNums(firstNum, currentNum);
             break;
         case '/':
-            divideNums(firstNum, currentNum);
+            return divideNums(firstNum, currentNum);
             break;
         case '^':
-            findExponent(firstNum, currentNum);
+            return findExponent(firstNum, currentNum);
             break;
     }
 };
@@ -164,9 +173,9 @@ btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
 clearBtn.addEventListener('click', () => clearEntry());
 addBtn.addEventListener('click', e => addToMemory(e));
-subtractBtn.addEventListener('click', () => addToMemory());
-multiplyBtn.addEventListener('click', () => addToMemory());
-divideBtn.addEventListener('click', () => addToMemory());
+subtractBtn.addEventListener('click', (e) => addToMemory(e));
+multiplyBtn.addEventListener('click', (e) => addToMemory(e));
+divideBtn.addEventListener('click', (e) => addToMemory(e));
 
 
 
@@ -214,6 +223,8 @@ function addToMemory(event) {
         memory.push(num);
         if(memory.length > 1){
             operator = event.target.innerText;
+            console.log(operator)
+            console.log(typeof(operator))
             total = operate(operator);
             displayWindow.innerText = total;
             display = [];
