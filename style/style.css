@@ -60,7 +60,7 @@ button {
     
 }
 
-.tall-plus {
+#tall-plus {
     grid-column: 5/6;
     grid-row: 4/6;
     height: 90%;
@@ -68,7 +68,7 @@ button {
     
 }
 
-.tall-equal {
+#tall-equal {
     grid-column: 6/7;
     grid-row: 4/6;
     height: 90%;

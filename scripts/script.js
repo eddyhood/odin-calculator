@@ -6,7 +6,7 @@ let memory = [];
 
 //Math functions
 function addNums(a, b) {
-    display = a + b;
+    console.log(a + b);
 };
 
 function subtractNums(a, b) {
@@ -137,6 +137,11 @@ const btn7 = document.getElementById('num7');
 const btn8 = document.getElementById('num8');
 const btn9 = document.getElementById('num9');
 const clearBtn = document.getElementById('clear-btn');
+const addBtn = document.getElementById('tall-plus');
+const subtractBtn = document.getElementById('subtract');
+const multiplyBtn = document.getElementById('multiply');
+const divideBtn = document.getElementById('divide');
+const equalBtn = document.getElementById('tall-equal');
 
 //Add event listeners
 btn0.addEventListener('click', e => updateDisplay(e));
@@ -149,22 +154,50 @@ btn6.addEventListener('click', e => updateDisplay(e));
 btn7.addEventListener('click', e => updateDisplay(e));
 btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
-clearBtn.addEventListener('click', () => clearDisplay());
+clearBtn.addEventListener('click', () => clearEntry());
+addBtn.addEventListener('click', () => addToMemory());
+subtractBtn.addEventListener('click', () => addToMemory());
+multiplyBtn.addEventListener('click', () => addToMemory());
+divideBtn.addEventListener('click', () => addToMemory());
 
-//update display with clicks
+
+
+// update display with clicks
 function updateDisplay(event) {
-    //Darken button
-
     //Update display
     let figure = event.target.innerText;
-    display.push(figure);
+    display.push(parseInt(figure));
     let numString = display.join('')
     let updatedDisplay = parseInt(numString);
 
     displayWindow.innerText = updatedDisplay;
+    console.log(display)
+    console.log(memory)
 }
 
-function clearDisplay() {
+function removeDisplay() {
+    let numString = display.join('');
+}
+
+function clearEntry() {
     display = [];
+    if(memory.length > 0) {
+        memory.pop(-1);
+    }
     displayWindow.innerText = 0;
 };
+
+//takes what is on display and adds to memory. Use when an operator key is pressed. 
+function addToMemory() {
+    if(display.length > 0) {
+        let stringNum = display.join('');
+        let num = parseInt(stringNum);
+        memory.push(num);
+        display = [];
+        console.log(memory);
+    } else{
+        memory = [];
+        return;
+    }
+
+    }
