@@ -58,10 +58,11 @@ Find the square root of 38
 11. Curent and final awnswer to two decimals is 6.16
 */
 
-function squareRoot(a) {
+function squareRoot() {
 
-    let square = findPerfectSquare(a);
-    let remainder = a - (square * square);
+    let toSquare = convertDisplay();
+    let square = findPerfectSquare(toSquare);
+    let remainder = toSquare - (square * square);
     let remainder100 = (remainder * 100);
     let doubleBase = String(square * 2);
     let maxCompare = 0;
@@ -98,10 +99,11 @@ function squareRoot(a) {
         };
     };
     
-    
     let answer = parseFloat(square + '.' + tenth + hundreth);
     
-    return answer;
+    display = [];
+    memory = [parseFloat(answer)];
+    displayWindow.innerText = answer;
 }
 
 function findPerfectSquare(n) {
@@ -164,6 +166,7 @@ const subtractBtn = document.getElementById('subtract');
 const multiplyBtn = document.getElementById('multiply');
 const divideBtn = document.getElementById('divide');
 const equalBtn = document.getElementById('tall-equal');
+const squareRootBtn = document.getElementById('square-root');
 
 //Add event listeners
 btn0.addEventListener('click', e => updateDisplay(e));
@@ -182,7 +185,7 @@ subtractBtn.addEventListener('click', (e) => addToMemory(e));
 multiplyBtn.addEventListener('click', (e) => addToMemory(e));
 divideBtn.addEventListener('click', (e) => addToMemory(e));
 equalBtn.addEventListener('click', (e) => addToMemory(e));
-
+squareRootBtn.addEventListener('click', squareRoot)
 
 
 // update display with clicks
@@ -214,6 +217,7 @@ function addToMemory(event) {
     if(display.length > 0) {
         //Store what is in display to memory
         let num = convertDisplay();
+        console.log('tyoe of memory ' + typeof(memory))
         memory.push(num);
         
         if(memory.length > 1){
@@ -226,10 +230,7 @@ function addToMemory(event) {
         }
         console.log('memory' + memory);
         console.log('display' + display);
-    // } else{
-    //     memory = [];
-    //     return;
-    // }
+    
     operator = event.target.innerText;
     //update global variable to hold current operation
     sign = operator;
@@ -238,6 +239,7 @@ function addToMemory(event) {
         //Get new operator since prior function has completed. This gets us ready for the next operaiton.
         operator = event.target.innerText;
         sign = operator;
+        console.log('new sign ' + sign)
     }
 };
 
