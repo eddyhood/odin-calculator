@@ -141,7 +141,7 @@ function operate(operator) {
         case '/':
             return divideNums(firstNum, currentNum);
             break;
-        case '^':
+        case 'Xy':
             return findExponent(firstNum, currentNum);
             break;
     }
@@ -167,6 +167,7 @@ const multiplyBtn = document.getElementById('multiply');
 const divideBtn = document.getElementById('divide');
 const equalBtn = document.getElementById('tall-equal');
 const squareRootBtn = document.getElementById('square-root');
+const exponentBtn = document.getElementById('exponent');
 
 //Add event listeners
 btn0.addEventListener('click', e => updateDisplay(e));
@@ -185,7 +186,8 @@ subtractBtn.addEventListener('click', (e) => addToMemory(e));
 multiplyBtn.addEventListener('click', (e) => addToMemory(e));
 divideBtn.addEventListener('click', (e) => addToMemory(e));
 equalBtn.addEventListener('click', (e) => addToMemory(e));
-squareRootBtn.addEventListener('click', squareRoot)
+squareRootBtn.addEventListener('click', squareRoot);
+exponentBtn.addEventListener('click', (e) => addToMemory(e));
 
 
 // update display with clicks
