@@ -226,14 +226,19 @@ function addToMemory(event) {
         }
         console.log('memory' + memory);
         console.log('display' + display);
-    } else{
-        memory = [];
-        return;
-    }
+    // } else{
+    //     memory = [];
+    //     return;
+    // }
     operator = event.target.innerText;
     //update global variable to hold current operation
     sign = operator;
     console.log('sign' + sign);
+    } else {
+        //Get new operator since prior function has completed. This gets us ready for the next operaiton.
+        operator = event.target.innerText;
+        sign = operator;
+    }
 };
 
 function holdOperator (operator) {
