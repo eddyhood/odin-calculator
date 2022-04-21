@@ -171,8 +171,8 @@ function updateDisplay(event) {
     let updatedDisplay = parseInt(numString);
 
     displayWindow.innerText = updatedDisplay;
-    console.log(display)
-    console.log(memory)
+    console.log('display ' + display)
+    console.log('memory ' + memory)
 }
 
 function removeDisplay() {
@@ -194,10 +194,9 @@ function addToMemory() {
         let num = parseInt(stringNum);
         memory.push(num);
         display = [];
-        console.log(memory);
+        console.log('memory ' + memory);
     } else{
         memory = [];
         return;
     }
-
-    }
+};

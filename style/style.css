@@ -13,9 +13,11 @@ body {
     font-family: 'VT323', monospace;
     font-size: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('..//images/background.svg');
 }
 
 button {
@@ -35,8 +37,9 @@ button {
     border-radius: 8px;
     height: 550px;
     width: 450px; 
-    background-color: hsla(206, 99%, 35%, .63);   
+    background-color: hsla(206, 99%, 35%, 1);   
 }
+
 
 .displayNums {
     display: flex;
