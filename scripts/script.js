@@ -1,6 +1,7 @@
 //global variables
 let display = [];
 let memory = [];
+let sign = '';
 
 //memory functions
 
@@ -120,6 +121,10 @@ function operate(operator) {
     let currentNum = convertDisplay();
     console.log('second Num' + typeof(currentNum) + currentNum)
 
+    if(firstNum && currentNum && memory.length > 0) {
+        sign = '';
+    }
+
     switch(operator) {
         case '+':
             return addNums(firstNum, currentNum);
@@ -176,6 +181,7 @@ addBtn.addEventListener('click', e => addToMemory(e));
 subtractBtn.addEventListener('click', (e) => addToMemory(e));
 multiplyBtn.addEventListener('click', (e) => addToMemory(e));
 divideBtn.addEventListener('click', (e) => addToMemory(e));
+equalBtn.addEventListener('click', (e) => addToMemory(e));
 
 
 
@@ -203,40 +209,38 @@ function clearEntry() {
     displayWindow.innerText = 0;
 };
 
-//takes what is on display and adds to memory. Use when an operator key is pressed. 
-// function addToMemory(event) {
-//     if(display.length > 0) {
-//         let stringNum = display.join('');
-//         let num = parseInt(stringNum);
-//         memory.push(num);
-//         display = [];
-//         console.log('memory ' + memory);
-//     } else{
-//         memory = [];
-//         return;
-//     }
-// };
 
 function addToMemory(event) {
     if(display.length > 0) {
+        //Store what is in display to memory
         let num = convertDisplay();
         memory.push(num);
+        
         if(memory.length > 1){
-            operator = event.target.innerText;
-            console.log(operator)
-            console.log(typeof(operator))
-            total = operate(operator);
+            //Run operation
+            total = operate(sign);
             displayWindow.innerText = total;
             display = [];
         } else {
             display = [];
         }
-        console.log('memory low ' + memory);
-        console.log('display low' + display)
+        console.log('memory' + memory);
+        console.log('display' + display);
     } else{
         memory = [];
         return;
     }
+    operator = event.target.innerText;
+    //update global variable to hold current operation
+    sign = operator;
+    console.log('sign' + sign);
+};
+
+function holdOperator (operator) {
+    let sign = operator;
+
+    //check to see how many values are in 
+
 };
 
 //combines values in display array, and makes them a number

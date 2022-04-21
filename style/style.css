@@ -20,6 +20,10 @@ body {
     background-image: url('..//images/background.svg');
 }
 
+h1 {
+    color: white;
+    
+}
 button {
     width: 3.5rem;
     height: 3.5rem;
