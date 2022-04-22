@@ -174,6 +174,7 @@ const changeSignBtn = document.getElementById('change-sign');
 const percentBtn = document.getElementById('percent');
 const removePercentBtn = document.getElementById('remove-percent');
 const addZerosBtn = document.getElementById('add-zeros');
+const clearMemoryBtn = document.getElementById('clear-memory');
 
 
 //Add event listeners
@@ -200,6 +201,7 @@ exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
 percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
 addZerosBtn.addEventListener('click', removePercent);
+clearMemoryBtn.addEventListener('click', clearMemory);
 
 //combines values in display array, and makes them a number
 function convertDisplay() { 
@@ -217,7 +219,6 @@ function changeToPercent() {
 function removePercent() {
     display = convertDisplay();
     num = (display) ? display * 100 : memory * 100;
-    console.log(display)
     display = num;
     memory = num;
     displayWindow.innerText = display;
@@ -271,6 +272,10 @@ function addToMemory(event) {
         sign = operator;
         console.log('new sign ' + sign)
     }
+};
+
+function clearMemory() {
+    memory = [];
 };
 
 //Function to call for the c button
