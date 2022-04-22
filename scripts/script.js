@@ -171,6 +171,7 @@ const squareRootBtn = document.getElementById('square-root');
 const exponentBtn = document.getElementById('exponent');
 const changeSignBtn = document.getElementById('change-sign');
 const percentBtn = document.getElementById('percent');
+const removePercentBtn = document.getElementById('remove-percent');
 
 
 //Add event listeners
@@ -194,7 +195,7 @@ equalBtn.addEventListener('click', (e) => addToMemory(e));
 squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
-percentBtn.addEventListener('click', changeToPercent);
+percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', () => console.log('boom'));
 
 //combines values in display array, and makes them a number
 function convertDisplay() {
