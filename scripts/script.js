@@ -205,33 +205,6 @@ function updateDisplay(event) {
     displayWindow.innerText = updatedDisplay;
     console.log('display ' + display)
     console.log('memory ' + memory)
-}
-
-
-//Function to call for the c button
-function clearEntry() {
-    display = [];
-    if(memory.length > 0) {
-        memory.pop(-1);
-    }
-    displayWindow.innerText = 0;
-};
-
-//function to call for the AC button
-function clearAll() {
-    display = []
-    memory = []
-    sign = ''
-    displayWindow.innerText = 0;
-};
-
-//function to change signs for the +/- button
-function changeSign() {
-    let num = convertDisplay();
-    let change = [num *= -1]
-    displayWindow.innerText = change;
-    display = [change];
-    
 };
 
 function addToMemory(event) {
@@ -263,6 +236,33 @@ function addToMemory(event) {
         console.log('new sign ' + sign)
     }
 };
+
+//Function to call for the c button
+function clearEntry() {
+    display = [];
+    if(memory.length > 0) {
+        memory.pop(-1);
+    }
+    displayWindow.innerText = 0;
+};
+
+//function to call for the AC button
+function clearAll() {
+    display = []
+    memory = []
+    sign = ''
+    displayWindow.innerText = 0;
+};
+
+//function to change signs for the +/- button
+function changeSign() {
+    let num = convertDisplay();
+    let change = [num *= -1]
+    displayWindow.innerText = change;
+    display = [change];
+    
+};
+
 
 
 function holdOperator (operator) {
