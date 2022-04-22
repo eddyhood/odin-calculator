@@ -170,6 +170,7 @@ const equalBtn = document.getElementById('tall-equal');
 const squareRootBtn = document.getElementById('square-root');
 const exponentBtn = document.getElementById('exponent');
 const changeSignBtn = document.getElementById('change-sign');
+const percentBtn = document.getElementById('percent');
 
 
 //Add event listeners
@@ -193,7 +194,7 @@ equalBtn.addEventListener('click', (e) => addToMemory(e));
 squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
-
+percentBtn.addEventListener('click', () => console.log('percents rock'));
 
 // update display with clicks
 function updateDisplay(event) {
