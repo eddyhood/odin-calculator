@@ -180,7 +180,7 @@ const recallMemoryBtn = document.getElementById('recall-memory');
 const addMemoryBtn = document.getElementById('add-memory');
 
 
-//Add event listeners
+//Add event listeners from mouse click
 btn0.addEventListener('click', e => updateDisplay(e));
 btn1.addEventListener('click', e => updateDisplay(e));
 btn2.addEventListener('click', e => updateDisplay(e));
@@ -208,6 +208,48 @@ clearMemoryBtn.addEventListener('click', clearMemory);
 lessMemoryBtn.addEventListener('click', clearMemory);
 recallMemoryBtn.addEventListener('click', recallMemory);
 addMemoryBtn.addEventListener('click', addMemory);
+
+
+//Add event listeners from keyboard keydown
+document.addEventListener('keydown', (e) => keydown(e));
+
+function keydown(event) {
+    switch(event.code) {
+        case 'Numpad0':
+            updateDisplay(event);
+            break;
+        case 'Digit0':
+            console.log('zero');
+            break;
+        
+    }
+};
+// btn1.addEventListener('click', e => updateDisplay(e));
+// btn2.addEventListener('click', e => updateDisplay(e));
+// btn3.addEventListener('click', e => updateDisplay(e));
+// btn4.addEventListener('click', e => updateDisplay(e));
+// btn5.addEventListener('click', e => updateDisplay(e));
+// btn6.addEventListener('click', e => updateDisplay(e));
+// btn7.addEventListener('click', e => updateDisplay(e));
+// btn8.addEventListener('click', e => updateDisplay(e));
+// btn9.addEventListener('click', e => updateDisplay(e));
+// btnDecimal.addEventListener('click', addDecimal);
+// clearBtn.addEventListener('click', () => clearEntry());
+// allClearBtn.addEventListener('click', () => clearAll());
+// addBtn.addEventListener('click', e => addToMemory(e));
+// subtractBtn.addEventListener('click', (e) => addToMemory(e));
+// multiplyBtn.addEventListener('click', (e) => addToMemory(e));
+// divideBtn.addEventListener('click', (e) => addToMemory(e));
+// equalBtn.addEventListener('click', (e) => addToMemory(e));
+// squareRootBtn.addEventListener('click', squareRoot);
+// exponentBtn.addEventListener('click', (e) => addToMemory(e));
+// changeSignBtn.addEventListener('click',changeSign);
+// percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
+// addZerosBtn.addEventListener('click', removePercent);
+// clearMemoryBtn.addEventListener('click', clearMemory);
+// lessMemoryBtn.addEventListener('click', clearMemory);
+// recallMemoryBtn.addEventListener('click', recallMemory);
+// addMemoryBtn.addEventListener('click', addMemory);
 
 //combines values in display array, and makes them a number
 function convertDisplay() { 
@@ -240,9 +282,8 @@ function addDecimal() {
 
 // update display with clicks
 function updateDisplay(event) {
-   
-    //Update display
-    let figure = event.target.innerText;
+    let figure = (event.type == 'keydown') ? event.key : event.target.innerText;
+    // let figure = event.target.innerText;
     let fullFigure = decimalNum + figure;
     display.push(parseFloat(fullFigure));
     let updatedDisplay = convertDisplay();
