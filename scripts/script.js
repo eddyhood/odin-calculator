@@ -175,6 +175,7 @@ const percentBtn = document.getElementById('percent');
 const removePercentBtn = document.getElementById('remove-percent');
 const addZerosBtn = document.getElementById('add-zeros');
 const clearMemoryBtn = document.getElementById('clear-memory');
+const lessMemoryBtn = document.getElementById('less-memory');
 const recallMemoryBtn = document.getElementById('recall-memory');
 const addMemoryBtn = document.getElementById('add-memory');
 
@@ -204,6 +205,7 @@ changeSignBtn.addEventListener('click',changeSign);
 percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
 addZerosBtn.addEventListener('click', removePercent);
 clearMemoryBtn.addEventListener('click', clearMemory);
+lessMemoryBtn.addEventListener('click', clearMemory);
 recallMemoryBtn.addEventListener('click', recallMemory);
 addMemoryBtn.addEventListener('click', addMemory);
 
@@ -289,7 +291,6 @@ function recallMemory() {
 function addMemory() {
     num = convertDisplay();
     memory = num;
-    console.log(memory)
 };
 //Function to call for the c button
 function clearEntry() {
