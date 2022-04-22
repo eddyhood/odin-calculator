@@ -2,7 +2,7 @@
 let display = [];
 let memory = [];
 let sign = '';
-
+let decimalNum = '';
 //memory functions
 
 //Math functions
@@ -160,6 +160,7 @@ const btn6 = document.getElementById('num6');
 const btn7 = document.getElementById('num7');
 const btn8 = document.getElementById('num8');
 const btn9 = document.getElementById('num9');
+const btnDecimal = document.getElementById('decimal');
 const clearBtn = document.getElementById('clear-btn');
 const allClearBtn = document.getElementById('all-clear-btn');
 const addBtn = document.getElementById('tall-plus');
@@ -185,6 +186,7 @@ btn6.addEventListener('click', e => updateDisplay(e));
 btn7.addEventListener('click', e => updateDisplay(e));
 btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
+btnDecimal.addEventListener('click', addDecimal);
 clearBtn.addEventListener('click', () => clearEntry());
 allClearBtn.addEventListener('click', () => clearAll());
 addBtn.addEventListener('click', e => addToMemory(e));
@@ -198,7 +200,7 @@ changeSignBtn.addEventListener('click',changeSign);
 percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
 
 //combines values in display array, and makes them a number
-function convertDisplay() {
+function convertDisplay() { 
     let stringNum = display.join('');
     let num = parseFloat(stringNum);
     return num;
@@ -217,25 +219,36 @@ function removePercent() {
     displayWindow.innerText = display;
 };
 
+function addDecimal() {
+    decimalNum = display + '.';
+    display = [];
+    displayWindow.innerText = decimalNum;
+    console.log('display ' + display)
+    console.log('memory' + memory)
+};
+
 // update display with clicks
 function updateDisplay(event) {
+   
     //Update display
     let figure = event.target.innerText;
-    display.push(parseInt(figure));
+    let fullFigure = decimalNum + figure;
+    display.push(parseFloat(fullFigure));
     let updatedDisplay = convertDisplay();
-
     displayWindow.innerText = updatedDisplay;
-    console.log('display ' + display)
-    console.log('memory ' + memory)
 };
 
 function addToMemory(event) {
     if(display.length > 0) {
         //Store what is in display to memory
         let num = convertDisplay();
-        console.log('tyoe of memory ' + typeof(memory))
         memory.push(num);
-        
+
+        //clear out so that decimal display updates after operator
+
+        decimalNum = '';
+
+        //Run mathamatical operation
         if(memory.length > 1){
             //Run operation
             total = operate(sign);
@@ -244,13 +257,10 @@ function addToMemory(event) {
         } else {
             display = [];
         }
-        console.log('memory' + memory);
-        console.log('display' + display);
     
     operator = event.target.innerText;
     //update global variable to hold current operation
     sign = operator;
-    console.log('sign' + sign);
     } else {
         //Get new operator since prior function has completed. This gets us ready for the next operaiton.
         operator = event.target.innerText;
@@ -270,9 +280,10 @@ function clearEntry() {
 
 //function to call for the AC button
 function clearAll() {
-    display = []
-    memory = []
-    sign = ''
+    display = [];
+    memory = [];
+    sign = '';
+    decimalNum = '';
     displayWindow.innerText = 0;
 };
 
