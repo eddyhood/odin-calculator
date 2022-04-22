@@ -194,7 +194,21 @@ equalBtn.addEventListener('click', (e) => addToMemory(e));
 squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
-percentBtn.addEventListener('click', () => console.log('percents rock'));
+percentBtn.addEventListener('click', changeToPercent);
+
+//combines values in display array, and makes them a number
+function convertDisplay() {
+    let stringNum = display.join('');
+    let num = parseFloat(stringNum);
+    return num;
+};
+
+//function to change to %
+function changeToPercent() {
+    num = convertDisplay();
+    display = [num * .01];
+    displayWindow.innerText = display;
+};
 
 // update display with clicks
 function updateDisplay(event) {
@@ -264,18 +278,9 @@ function changeSign() {
     
 };
 
-
-
 function holdOperator (operator) {
     let sign = operator;
 
     //check to see how many values are in 
 
-};
-
-//combines values in display array, and makes them a number
-function convertDisplay() {
-    let stringNum = display.join('');
-    let num = parseInt(stringNum);
-    return num;
 };
