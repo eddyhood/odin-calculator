@@ -195,7 +195,7 @@ equalBtn.addEventListener('click', (e) => addToMemory(e));
 squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
-percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', () => console.log('boom'));
+percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
 
 //combines values in display array, and makes them a number
 function convertDisplay() {
@@ -204,10 +204,16 @@ function convertDisplay() {
     return num;
 };
 
-//function to change to %
 function changeToPercent() {
     num = convertDisplay();
     display = [num * .01];
+    displayWindow.innerText = display;
+};
+
+function removePercent() {
+    num = memory * 100;
+    display = num;
+    memory = num;
     displayWindow.innerText = display;
 };
 
