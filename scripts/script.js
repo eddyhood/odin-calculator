@@ -175,6 +175,7 @@ const percentBtn = document.getElementById('percent');
 const removePercentBtn = document.getElementById('remove-percent');
 const addZerosBtn = document.getElementById('add-zeros');
 const clearMemoryBtn = document.getElementById('clear-memory');
+const recallMemoryBtn = document.getElementById('recall-memory');
 
 
 //Add event listeners
@@ -202,6 +203,7 @@ changeSignBtn.addEventListener('click',changeSign);
 percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
 addZerosBtn.addEventListener('click', removePercent);
 clearMemoryBtn.addEventListener('click', clearMemory);
+recallMemoryBtn.addEventListener('click', recallMemory);
 
 //combines values in display array, and makes them a number
 function convertDisplay() { 
@@ -278,6 +280,9 @@ function clearMemory() {
     memory = [];
 };
 
+function recallMemory() {
+    displayWindow.innerText = parseFloat(memory);
+};
 //Function to call for the c button
 function clearEntry() {
     display = [];
