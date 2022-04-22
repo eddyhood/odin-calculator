@@ -22,10 +22,8 @@ body {
 
 h1 {
     color: white;
-    -webkit-text-stroke-width: .1px;
-    -webkit-text-stroke-color: #FFD53D;
-    
 }
+
 button {
     width: 3.5rem;
     height: 3.5rem;

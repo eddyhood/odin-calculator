@@ -161,6 +161,7 @@ const btn7 = document.getElementById('num7');
 const btn8 = document.getElementById('num8');
 const btn9 = document.getElementById('num9');
 const clearBtn = document.getElementById('clear-btn');
+const allClearBtn = document.getElementById('all-clear-btn');
 const addBtn = document.getElementById('tall-plus');
 const subtractBtn = document.getElementById('subtract');
 const multiplyBtn = document.getElementById('multiply');
@@ -168,6 +169,8 @@ const divideBtn = document.getElementById('divide');
 const equalBtn = document.getElementById('tall-equal');
 const squareRootBtn = document.getElementById('square-root');
 const exponentBtn = document.getElementById('exponent');
+const changeSignBtn = document.getElementById('change-sign');
+
 
 //Add event listeners
 btn0.addEventListener('click', e => updateDisplay(e));
@@ -181,6 +184,7 @@ btn7.addEventListener('click', e => updateDisplay(e));
 btn8.addEventListener('click', e => updateDisplay(e));
 btn9.addEventListener('click', e => updateDisplay(e));
 clearBtn.addEventListener('click', () => clearEntry());
+allClearBtn.addEventListener('click', () => clearAll());
 addBtn.addEventListener('click', e => addToMemory(e));
 subtractBtn.addEventListener('click', (e) => addToMemory(e));
 multiplyBtn.addEventListener('click', (e) => addToMemory(e));
@@ -188,6 +192,7 @@ divideBtn.addEventListener('click', (e) => addToMemory(e));
 equalBtn.addEventListener('click', (e) => addToMemory(e));
 squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
+changeSignBtn.addEventListener('click',changeSign);
 
 
 // update display with clicks
@@ -202,10 +207,8 @@ function updateDisplay(event) {
     console.log('memory ' + memory)
 }
 
-function removeDisplay() {
-    let numString = display.join('');
-}
 
+//Function to call for the c button
 function clearEntry() {
     display = [];
     if(memory.length > 0) {
@@ -214,6 +217,22 @@ function clearEntry() {
     displayWindow.innerText = 0;
 };
 
+//function to call for the AC button
+function clearAll() {
+    display = []
+    memory = []
+    sign = ''
+    displayWindow.innerText = 0;
+};
+
+//function to change signs for the +/- button
+function changeSign() {
+    let num = convertDisplay();
+    let change = [num *= -1]
+    displayWindow.innerText = change;
+    display = [change];
+    
+};
 
 function addToMemory(event) {
     if(display.length > 0) {
@@ -244,6 +263,7 @@ function addToMemory(event) {
         console.log('new sign ' + sign)
     }
 };
+
 
 function holdOperator (operator) {
     let sign = operator;
