@@ -173,6 +173,7 @@ const exponentBtn = document.getElementById('exponent');
 const changeSignBtn = document.getElementById('change-sign');
 const percentBtn = document.getElementById('percent');
 const removePercentBtn = document.getElementById('remove-percent');
+const addZerosBtn = document.getElementById('add-zeros');
 
 
 //Add event listeners
@@ -198,6 +199,7 @@ squareRootBtn.addEventListener('click', squareRoot);
 exponentBtn.addEventListener('click', (e) => addToMemory(e));
 changeSignBtn.addEventListener('click',changeSign);
 percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
+addZerosBtn.addEventListener('click', removePercent);
 
 //combines values in display array, and makes them a number
 function convertDisplay() { 
@@ -213,7 +215,9 @@ function changeToPercent() {
 };
 
 function removePercent() {
-    num = memory * 100;
+    display = convertDisplay();
+    num = (display) ? display * 100 : memory * 100;
+    console.log(display)
     display = num;
     memory = num;
     displayWindow.innerText = display;
