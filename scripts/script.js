@@ -134,7 +134,7 @@ function operate(operator) {
         case '-':
             return subtractNums(firstNum, currentNum);
             break;
-        case 'X':
+        case '*':
             console.log('here too')
             return multiplyNums(firstNum, currentNum);
             break;
@@ -219,9 +219,77 @@ function keydown(event) {
             updateDisplay(event);
             break;
         case 'Digit0':
-            console.log('zero');
+            updateDisplay(event);
             break;
-        
+        case 'Numpad1':
+            updateDisplay(event);
+            break;
+        case 'Digit1':
+            updateDisplay(event);
+            break;
+        case 'Numpad2':
+            updateDisplay(event);
+            break;
+        case 'Digit2':
+            updateDisplay(event);
+            break;
+        case 'Numpad3':
+            updateDisplay(event);
+            break;
+        case 'Digit3':
+            updateDisplay(event);
+            break;
+        case 'Numpad4':
+            updateDisplay(event);
+            break;
+        case 'Digit4':
+            updateDisplay(event);
+            break;
+        case 'Numpad5':
+            updateDisplay(event);
+            break;
+        case 'Digit5':
+            updateDisplay(event);
+            break;
+        case 'Numpad6':
+            updateDisplay(event);
+            break;
+        case 'Digit6':
+            updateDisplay(event);
+            break;
+        case 'Numpad7':
+            updateDisplay(event);
+            break;
+        case 'Digit7':
+            updateDisplay(event);
+            break;
+        case 'Numpad8':
+            updateDisplay(event);
+            break;
+        case 'Digit8':
+            updateDisplay(event);
+            break;
+        case 'Numpad9':
+            updateDisplay(event);
+            break;
+        case 'Digit9':
+            updateDisplay(event);
+            break;
+        case 'NumpadAdd':
+            addToMemory(event);
+            break;
+        case 'NumpadSubtract':
+            addToMemory(event);
+            break;
+        case 'NumpadMultiply':
+            addToMemory(event);
+            break;
+        case 'NumpadDivide':
+            addToMemory(event);
+            break;    
+        case 'NumpadEnter':
+            addToMemory(event);
+            break; 
     }
 };
 // btn1.addEventListener('click', e => updateDisplay(e));
@@ -295,30 +363,34 @@ function addToMemory(event) {
         //Store what is in display to memory
         let num = convertDisplay();
         memory.push(num);
-
+        
         //clear out so that decimal display updates after operator
-
+        
         decimalNum = '';
-
+        
         //Run mathamatical operation
         if(memory.length > 1){
-            //Run operation
+            //Run operation with sign from global variable
             total = operate(sign);
             displayWindow.innerText = total;
             display = [];
         } else {
             display = [];
         }
-    
-    operator = event.target.innerText;
-    //update global variable to hold current operation
-    sign = operator;
+        
+        // operator = event.target.innerText;
+        operator = (event.type == 'keydown') ? event.key : event.target.innerText;
+        //update global variable to hold current operation
+        sign = operator;
+        console.log('sign is ' + sign)
     } else {
         //Get new operator since prior function has completed. This gets us ready for the next operaiton.
         operator = event.target.innerText;
         sign = operator;
         console.log('new sign ' + sign)
-    }
+    } 
+    console.log('display ' + display)
+    console.log('memory' + memory)
 };
 
 function clearMemory() {
