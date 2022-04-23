@@ -289,6 +289,7 @@ function keydown(event) {
             break;    
         case 'NumpadEnter':
             addToMemory(event);
+            console.log(event)
             break; 
     }
 };
@@ -372,6 +373,7 @@ function addToMemory(event) {
         if(memory.length > 1){
             //Run operation with sign from global variable
             total = operate(sign);
+            console.log('sign now ' + sign)
             displayWindow.innerText = total;
             display = [];
         } else {
@@ -380,12 +382,14 @@ function addToMemory(event) {
         
         // operator = event.target.innerText;
         operator = (event.type == 'keydown') ? event.key : event.target.innerText;
+
         //update global variable to hold current operation
-        sign = operator;
+        (operator == 'Enter') ? sign = '' : sign = operator;
+        // sign = operator;
         console.log('sign is ' + sign)
     } else {
         //Get new operator since prior function has completed. This gets us ready for the next operaiton.
-        operator = event.target.innerText;
+        operator = (event.type == 'keydown') ? event.key : event.target.innerText;
         sign = operator;
         console.log('new sign ' + sign)
     } 
