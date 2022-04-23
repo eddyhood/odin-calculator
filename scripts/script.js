@@ -289,36 +289,13 @@ function keydown(event) {
             break;    
         case 'NumpadEnter':
             addToMemory(event);
-            console.log(event)
             break; 
-    }
-};
-// btn1.addEventListener('click', e => updateDisplay(e));
-// btn2.addEventListener('click', e => updateDisplay(e));
-// btn3.addEventListener('click', e => updateDisplay(e));
-// btn4.addEventListener('click', e => updateDisplay(e));
-// btn5.addEventListener('click', e => updateDisplay(e));
-// btn6.addEventListener('click', e => updateDisplay(e));
-// btn7.addEventListener('click', e => updateDisplay(e));
-// btn8.addEventListener('click', e => updateDisplay(e));
-// btn9.addEventListener('click', e => updateDisplay(e));
-// btnDecimal.addEventListener('click', addDecimal);
-// clearBtn.addEventListener('click', () => clearEntry());
-// allClearBtn.addEventListener('click', () => clearAll());
-// addBtn.addEventListener('click', e => addToMemory(e));
-// subtractBtn.addEventListener('click', (e) => addToMemory(e));
-// multiplyBtn.addEventListener('click', (e) => addToMemory(e));
-// divideBtn.addEventListener('click', (e) => addToMemory(e));
-// equalBtn.addEventListener('click', (e) => addToMemory(e));
-// squareRootBtn.addEventListener('click', squareRoot);
-// exponentBtn.addEventListener('click', (e) => addToMemory(e));
-// changeSignBtn.addEventListener('click',changeSign);
-// percentBtn.addEventListener('click', changeToPercent);removePercentBtn.addEventListener('click', removePercent);
-// addZerosBtn.addEventListener('click', removePercent);
-// clearMemoryBtn.addEventListener('click', clearMemory);
-// lessMemoryBtn.addEventListener('click', clearMemory);
-// recallMemoryBtn.addEventListener('click', recallMemory);
-// addMemoryBtn.addEventListener('click', addMemory);
+        case 'NumpadDecimal':
+            addDecimal();
+            break; 
+        }
+    };
+
 
 //combines values in display array, and makes them a number
 function convertDisplay() { 
