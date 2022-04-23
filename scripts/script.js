@@ -26,9 +26,13 @@ function multiplyNums(a, b) {
 }
 
 function divideNums(a, b) {
-    answer = a / b;
-    memory = [answer];
-    return(answer);
+    if(b == 0) {
+        return displayWindow.innerText = 'FLUMP';
+    } else {
+        answer = a / b;
+        memory = [answer];
+        return(answer);
+    };
 }
 
 function findExponent(base, power) {
@@ -401,7 +405,7 @@ function clearAll() {
     memory = [];
     sign = '';
     decimalNum = '';
-    displayWindow.innerText = 0;
+    displayWindow.innerText = display;
 };
 
 //function to change signs for the +/- button
